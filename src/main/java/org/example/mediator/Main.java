@@ -7,12 +7,14 @@ public class Main {
         Usuario joao = new Usuario("João");
         Usuario carlos = new Usuario("Carlos");
 
-        maria.adicionaContato(joao);
-        joao.adicionaContato(carlos);
-        carlos.adicionaContato(maria);
+        RedeSocialMediatorImpl redeSocial = new RedeSocialMediatorImpl();
 
-        maria.enviaMensagem("Olá, João!", joao);
-        joao.enviaMensagem("Oi, Carlos!", carlos);
-        carlos.enviaMensagem("Bom dia, Maria!", maria);
+        redeSocial.adicionarUsuario(maria);
+        redeSocial.adicionarUsuario(joao);
+        redeSocial.adicionarUsuario(carlos);
+
+        redeSocial.enviaMensagem("Olá, João", maria, joao);
+        redeSocial.enviaMensagem("Oi, Carlos!", joao, carlos);
+        redeSocial.enviaMensagem("Bom dia, Maria!", carlos, maria);
     }
 }
