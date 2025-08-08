@@ -11,7 +11,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Validador validador = new Validador();
-        validador.processa("Maira", false, true, true);
+        Usuario usuario = new Usuario("Maira", false, true, true);
+        Validador autenticacao = new AprovacaoAutenticacao();
+        Validador autorizacao = new AprovacaoAutorizacao();
+        Validador dadosValidos = new AprovacaoDadosValidos();
+
+        autenticacao.setProximoValidador(autorizacao);
+        autorizacao.setProximoValidador(dadosValidos);
+
+        autenticacao.processa(usuario);
+
     }
 }
