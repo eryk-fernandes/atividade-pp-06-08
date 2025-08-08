@@ -14,7 +14,12 @@ public class Main {
     public static void main(String[] args) {
 
         EditorDeArquivos editor = new EditorDeArquivos();
-        editor.executarAcao("criar", "documento.txt");
-        editor.executarAcao("renomear", "documento.txt");
+        ListaDeComandos listaDeComandos = new ListaDeComandos();
+
+        listaDeComandos.adicionar(new CriarCommand(editor, "documento.txt"));
+        listaDeComandos.adicionar(new RenomearCommand(editor, "documento.txt"));
+        listaDeComandos.adicionar(new ExcluirCommand(editor, "documento.txt"));
+
+        listaDeComandos.executar();
     }
 }
