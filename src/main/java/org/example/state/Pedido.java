@@ -9,14 +9,18 @@ public class Pedido {
     }
 
     public void mudarEstado() {
-        estado = estado.mudarEstado(this.estado);
+        setEstado(estado.mudarEstado(this.estado));
     }
 
     public void cancelar() {
-        estado = estado.cancelar(this.estado);
+        setEstado(estado.cancelar(this.estado));
     }
 
     public void mostrarEstado() {
         estado.mostrarEstado();
+    }
+
+    public void setEstado(PedidoEstado estado) {
+        this.estado = estado;
     }
 }
